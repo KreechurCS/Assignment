@@ -29,11 +29,11 @@ void myCursor()
   noFill();
   stroke(0,255,0);
   strokeWeight(2);
-  line(mouseX - 15, mouseY, mouseX - 5, mouseY);
-  line(mouseX +15, mouseY, mouseX + 5, mouseY);
-  ellipse(mouseX, mouseY, 5,5);
+  line(mouseX - 14, mouseY, mouseX - 6, mouseY);
+  line(mouseX +14, mouseY, mouseX + 6, mouseY);
+  ellipse(mouseX, mouseY, 4,4);
   strokeWeight(3);
-  line(mouseX, mouseY + 15, mouseX, mouseY + 5);
+  line(mouseX, mouseY + 15, mouseX, mouseY + 6);
 }
 
 void loading()
@@ -84,6 +84,11 @@ void mainMenus()
   strokeWeight(5);
   stroke(0,202,255);
   rect(0,0,width,height/2);
+  noStroke();
+  fill(100);
+  triangle(0,290, 0, 360, 75, 360);
+  triangle(width, 290, width, 360, width -75, 360);
+  
   boolean fueling = false;
   fuelBar(fueling);
   
@@ -120,9 +125,14 @@ void fuelBar(boolean fueling)
   
   
   // Fuel Losing
-  if(frameCount % 5 == 0)
+  if(frameCount % 10 == 0)
   {
     fuelbar -= 1;
   }
   fuel = fuelbar/3;
+  if (fuel <= 0)
+  {
+    fuelbar = 0;
+  }
+  
 }
