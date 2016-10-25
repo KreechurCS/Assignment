@@ -14,6 +14,8 @@ void draw()
   if (start == 1)
   {
     mainMenus();
+    overlay();
+    radar();
   }
   else
   {
@@ -135,4 +137,34 @@ void fuelBar(boolean fueling)
     fuelbar = 0;
   }
   
+}
+void overlay()
+{
+  fill(0,159,255,50);
+  //main rect
+  rect(50,70, width - 100, 220);
+  rect(30,70, 20, 220);
+  rect(width - 30, 70, -20, 220);
+  rect(110,30, 780, 40);
+  //bottom left
+  triangle(50,320, 50, 290, 30, 290);
+  triangle(50,320, 50, 290, 280, 290);
+  //bottom right
+  triangle(width - 50, 320, width - 50, 290, width - 30, 290);
+  triangle(width - 50,320,width - 50, 290, width - 280, 290);
+  //top left
+  triangle(110, 70, 30, 70, 110, 30);
+  //top right
+  triangle(width - 110, 70, width - 30, 70, width - 110, 30);
+}
+float angle = 90;
+void radar()
+{
+  angle = angle + 0.013;
+  float c = angle;
+  translate(width/2, height/2);
+  rotate(c);
+  stroke(0,255,0);
+  line(0,0, 200,200);
+  println(c);
 }
