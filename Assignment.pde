@@ -15,13 +15,15 @@ void draw()
   {
     mainMenus();
     overlay();
-    radar();
+    pulse();
+    myCursor();
+    //radar();
   }
   else
   {
     loading();
+    myCursor();
   }
-  myCursor();
   println(mouseX + "x");
   println(mouseY + "y");
 }
@@ -157,6 +159,30 @@ void overlay()
   //top right
   triangle(width - 110, 70, width - 30, 70, width - 110, 30);
 }
+
+int pulseAlpha = 0;
+int pulseSwitch = 1;
+void pulse()
+{
+  stroke(0,232,255, pulseAlpha);
+  strokeWeight(2);
+  line(285,285, width - 285, 285);
+  line(115, 35, width - 115, 35);
+  line (960, 280, 960, 80);
+  line (width - 960,280, width - 960, 80);
+  
+  pulseAlpha = pulseAlpha + pulseSwitch;
+  if(pulseAlpha <= 0)
+  {
+    pulseSwitch = 3;
+  }
+  else if(pulseAlpha >= 255)
+  {
+    pulseSwitch = -3;
+  }
+  println("pulse" + pulseAlpha);
+}
+
 float angle = 90;
 void radar()
 {
@@ -165,6 +191,6 @@ void radar()
   translate(width/2, height/2);
   rotate(c);
   stroke(0,255,0);
-  line(0,0, 200,200);
+  line(0,0, 100,100);
   println(c);
 }
