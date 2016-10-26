@@ -104,13 +104,14 @@ void mainMenus()
 void fuelBar(boolean fueling)
 {
   color fuelColor = color(255,0,0);
-  stroke(0);
-  fill(200);
+  stroke(0,150,255);
+  fill(0,255,255, 100);
   rect(width/2 + 150, height/2 + 50, 300, 40,15);
   fill(fuelColor);
   noStroke();
   rect(width/2 + 151, height/2 + 51, fuelbar, 39,15);
 
+  textSize(30);
   fill(0);
   text("FUEL:", 765, 390);
   if (fuel >= 50 && fuel <= 90)
@@ -138,6 +139,27 @@ void fuelBar(boolean fueling)
   {
     fuelbar = 0;
   }
+  
+//Low Fuel
+if (fuel < 20 && fuel > 0)
+{
+  fill(255,0,0);
+  textSize(30);
+  if((frameCount % 20) > 5)
+  {
+    text("Warning!",430,70);
+    text("Low Fuel",430, 100);
+  }
+}
+else if(fuel < 20)
+{
+  textSize(40);
+  fill(255,0,0);
+  if((frameCount % 20) > 3)
+  {
+    text("FUEL EMPTY",400, 100);
+  }
+}
   
 }
 void overlay()
@@ -180,7 +202,6 @@ void pulse()
   {
     pulseSwitch = -3;
   }
-  println("pulse" + pulseAlpha);
 }
 
 float angle = 90;
