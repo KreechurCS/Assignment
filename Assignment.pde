@@ -10,6 +10,9 @@ int loadbar = 0;
 int fuelbar = 300;
 void draw()
 {
+  PFont zian;
+  zian = loadFont("Zian.vlw");
+  textFont(zian);
   frameRate(60);
   if (start == 1)
   {
@@ -93,10 +96,12 @@ void mainMenus()
   triangle(0,290, 0, 360, 75, 360);
   triangle(width, 290, width, 360, width -75, 360);
   
+  statusBox();
   boolean fueling = false;
   fuelBar(fueling);
+  shield();
   
-}
+}//END mainMenus
 
   int fuel = 100;
   int buttonDistX;
@@ -113,7 +118,7 @@ void fuelBar(boolean fueling)
 
   textSize(30);
   fill(0);
-  text("FUEL:", 765, 390);
+  text("FUEL:", 745, 390);
   if (fuel >= 50 && fuel <= 90)
   {
     fuelColor = color(255,255,0);
@@ -141,27 +146,27 @@ void fuelBar(boolean fueling)
   }
   
 //Low Fuel
-if (fuel < 20 && fuel > 0)
-{
-  fill(255,0,0);
-  textSize(30);
-  if((frameCount % 20) > 5)
+  if (fuel < 20 && fuel > 0)
   {
-    text("Warning!",430,70);
-    text("Low Fuel",430, 100);
+    fill(255,0,0);
+    textSize(30);
+    if((frameCount % 20) > 5)
+    {
+      text("Warning!",430,70);
+      text("Low Fuel",430, 100);
+    }
   }
-}
-else if(fuel < 20)
-{
-  textSize(40);
-  fill(255,0,0);
-  if((frameCount % 20) > 3)
+  else if(fuel < 20)
   {
-    text("FUEL EMPTY",400, 100);
+    textSize(40);
+    fill(255,0,0);
+    if((frameCount % 20) > 3)
+    {
+      text("FUEL EMPTY",370, 100);
+    }
   }
-}
-  
-}
+}//END FUELBAR
+
 void overlay()
 {
   fill(0,159,255,50);
@@ -188,10 +193,18 @@ void pulse()
 {
   stroke(0,232,255, pulseAlpha);
   strokeWeight(2);
+  //Main Hud
   line(285,285, width - 285, 285);
   line(115, 35, width - 115, 35);
   line (960, 280, 960, 80);
   line (width - 960,280, width - 960, 80);
+  
+  //Status Overlay
+  line(650,360, 970, 360);
+  line(650,360, 600, 410);
+  line(600,410, 600, 685);
+  line(600,685, 970, 685);
+  line(970,685, 970, 360);
   
   pulseAlpha = pulseAlpha + pulseSwitch;
   if(pulseAlpha <= 0)
@@ -214,4 +227,17 @@ void radar()
   stroke(0,255,0);
   line(0,0, 100,100);
   println(c);
+}
+
+void statusBox()
+{
+  fill(0,159,255,50);
+  rect(650,360, 325, 325);
+  triangle(650,360, 650, 410, 600,410);
+  rect(600,410,50,275);
+}
+
+void shield()
+{
+  
 }
