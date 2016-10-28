@@ -248,7 +248,7 @@ void fuelBar(boolean fueling)
 
   textSize(30);
   fill(0);
-  text("FUEL:", 745, 390);
+  text("FUEL:", 660, 390);
   if (fuel >= 50 && fuel <= 90)
   {
     fuelColor = color(255,255,0);
@@ -259,7 +259,7 @@ void fuelBar(boolean fueling)
   }
     textSize(28);
   fill(fuelColor);
-  text(fuel + "%", 860, 390);
+  text(fuel + "%", 770, 390);
   
   //Refuel Button
   
@@ -297,7 +297,44 @@ void fuelBar(boolean fueling)
   }
 }//END FUELBAR.
 
+int shield = 300;
 void shield()
 {
+  textSize(30);
+  stroke(0,150,255);
+  fill(0,255,255, 100);
+  rect(width/2 + 150, height/2 + 150, 300, 40,15);
+  noStroke();
+  fill(0,255,0,75);
+  rect(width/2 + 151, height/2 + 151, shield, 39,15);
   
+  //Status of Shield
+  if(fuel == 0)
+  {
+    shield -= 5;
+    if (shield <= 0)
+    {
+      shield = 0;
+      fill(255,0,0);
+      text("SHIELD:OFFLINE", 660,490);
+      //Shield Warning
+      textSize(34);
+      fill(255,0,0);
+      if((frameCount % 20) > 4)
+      {
+        text("SHIELD OFFLINE",365, 125);
+      }
+    }
+    
+  }
+  else if(fuel > 0 && shield <= 300)
+  {
+    shield += 5;
+    fill(0,255,0);
+    text("SHIELD:ONLINE", 660,490);
+    if (shield > 300)
+    {
+      shield = 300;
+    }
+  }
 }
