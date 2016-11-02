@@ -1,3 +1,8 @@
+/*
+Author: Steve Martin
+Last Update: 02/11/2016
+Description: A Sci-Fi themed HUD for a spaceship
+*/
 void setup()
 {
   size(1000,700);
@@ -80,6 +85,7 @@ void loading()
   }
 }//end loading
 
+int fuelCon = 0;
 void mainMenus()
 {
   background(0);
@@ -98,7 +104,8 @@ void mainMenus()
   
   statusBox();
   boolean fueling = false;
-  fuelBar(fueling);
+  fuelBar(fuelCon);
+  fuelCon = speed();
   shield();
   
 }//END mainMenus
@@ -236,7 +243,7 @@ void statusBox()
   rect(600,410,50,275);
 }
 
-void fuelBar(boolean fueling)
+void fuelBar(int fuelCon)
 {
   color fuelColor = color(255,0,0);
   stroke(0,150,255);
@@ -267,12 +274,13 @@ void fuelBar(boolean fueling)
   // Fuel Losing
   if(frameCount % 10 == 0)
   {
-    fuelbar -= 1;
+    fuelbar = fuelbar - fuelCon;
   }
   fuel = fuelbar/3;
   if (fuel <= 0)
   {
     fuelbar = 0;
+    speed = 0;
   }
   
 //Low Fuel
@@ -303,10 +311,10 @@ void shield()
   textSize(30);
   stroke(0,150,255);
   fill(0,255,255, 100);
-  rect(width/2 + 150, height/2 + 150, 300, 40,15);
+  rect(width/2 + 150, height/2 + 125, 300, 40,15);
   noStroke();
   fill(0,255,0,75);
-  rect(width/2 + 151, height/2 + 151, shield, 39,15);
+  rect(width/2 + 151, height/2 + 126, shield, 39,15);
   
   //Status of Shield
   if(fuel == 0)
@@ -316,7 +324,7 @@ void shield()
     {
       shield = 0;
       fill(255,0,0);
-      text("SHIELD:OFFLINE", 660,490);
+      text("SHIELD:OFFLINE", 660,465);
       //Shield Warning
       textSize(34);
       fill(255,0,0);
@@ -331,10 +339,67 @@ void shield()
   {
     shield += 5;
     fill(0,255,0);
-    text("SHIELD:ONLINE", 660,490);
+    text("SHIELD:ONLINE", 660,465);
     if (shield > 300)
     {
       shield = 300;
     }
+  }
+}
+
+int speed = 0;
+int speedbar;
+int speed()
+{
+  int maxSpeed = 600;
+  speedbar = speed/2;
+  if (speed >= maxSpeed)
+  {
+    speed = maxSpeed;
+  }
+  if (speed <= 0)
+  {
+    speed = 0;
+  }
+  //to check if accelerating
+  if (keyPressed)
+  {
+    if(keyCode == UP)
+    {
+      speed++;
+    }
+    else if(keyCode == DOWN)
+    {
+      speed--;
+    }
+  }
+ 
+  //to Draw the box
+  textSize(30);
+  stroke(0,150,255);
+  fill(0,255,255, 100);
+  rect(width/2 + 150, height/2 + 200, 300, 40,15);
+  noStroke();
+  fill(0,255,0,125);
+  rect(width/2 + 151, height/2 + 201,speedbar, 39,15);
+  fill(0,255,0);
+  text("Speed:" + speed,660, height/2 + 195);
+  
+   //For Fuel Consumption
+  if(speed == 0)
+  {
+    return(0);
+  }
+  else if(speed < 150 && speed > 0)
+  {
+    return(1);
+  }
+  else if(speed >=150 && speed < 300)
+  {
+    return(2);
+  }
+  else if(speed >= 300 && speed < 450);
+  {
+    return(3);
   }
 }
