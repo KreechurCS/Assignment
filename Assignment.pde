@@ -9,6 +9,7 @@ void setup()
   background(0);
   noCursor();
 }
+//test test1 = new test(500, 500);
 
 int start = 0;
 int loadbar = 0;
@@ -26,6 +27,7 @@ void draw()
     pulse();
     myCursor();
     radar();
+    //test1.update();
   }
   else
   {
