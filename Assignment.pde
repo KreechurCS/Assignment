@@ -107,6 +107,7 @@ void mainMenus()
   fuelBar(fuelCon);
   fuelCon = speed();
   shield();
+  shipHealth();
   
 }//END mainMenus
 
@@ -214,11 +215,14 @@ void radar()
   
 }
 
+int bleep1 = 1;
+int bleep2 = 1;
 void RadarHits(float RadarX, float RadarY)
 {
   int hit1X, hit1Y;
   int hit2X, hit2Y;
-  
+  int add = 1;
+   
   hit1X = 175;
   hit1Y = 500;
   hit2X = 280;
@@ -227,14 +231,21 @@ void RadarHits(float RadarX, float RadarY)
   fill(255);
   if(RadarX > hit1X && RadarY > hit1Y)
   {
+    noStroke();
+    fill(255);
     rect(hit1X, hit1Y, 5, 5);
   }
   
   if(RadarX > hit2X && RadarY > hit2Y)
   {
+    noStroke();
+    fill(255);
     rect(hit2X, hit2Y, 5, 5);
   }
-}
+  
+}//End radar Hits
+
+
 void statusBox()
 {
   fill(0,159,255,50);
@@ -306,6 +317,7 @@ void fuelBar(int fuelCon)
 }//END FUELBAR.
 
 int shield = 300;
+int damage = 0;
 void shield()
 {
   textSize(30);
@@ -332,8 +344,13 @@ void shield()
       {
         text("SHIELD OFFLINE",365, 125);
       }
+      shipDamage();
+      if (damage == 1)
+      {
+        textSize(18);
+        text("Damage Taken",770,60);
+      }
     }
-    
   }
   else if(fuel > 0 && shield <= 300)
   {
@@ -372,6 +389,10 @@ int speed()
     {
       speed--;
     }
+    else if (keyCode == SHIFT)
+    {
+      speed = 0;
+    }
   }
  
   //to Draw the box
@@ -386,20 +407,71 @@ int speed()
   text("Speed:" + speed,660, height/2 + 195);
   
    //For Fuel Consumption
-  if(speed == 0)
+  if(speed <= 0)
   {
     return(0);
   }
-  else if(speed < 150 && speed > 0)
+  else if(speed < 200 && speed > 0)
   {
     return(1);
   }
-  else if(speed >=150 && speed < 300)
+  else if(speed >=200 && speed < 400)
   {
     return(2);
   }
-  else if(speed >= 300 && speed < 450);
+  else if(speed >= 400 && speed < 600);
   {
     return(3);
+  }
+}//End Speed
+
+void shipHealth()
+{
+  fill(0,255,255,75);
+  triangle(660,660,710,660,685,610);//UP
+  triangle(695,610,745,610,720,660);//Down
+  triangle(730,660,780,660,755,610);//Up
+  triangle(765,610,815,610,790,660);//Down
+  triangle(800,660,850,660,825,610);//Up
+  triangle(835,610,885,610,860,660);//Down
+  triangle(870,660,920,660,895,610);//Up
+  triangle(905,610,955,610,930,660);//Down
+  shipHealthFrame();
+}//End shipHealth
+
+int shipHealth = 100;
+void shipHealthFrame()
+{
+  noStroke();
+  fill(0,255,0,100);
+  if(shipHealth > 0)
+    triangle(663,663,713,663,688,613);//UP
+  if(shipHealth > 12)
+    triangle(698,613,748,613,723,663);//Down
+  if(shipHealth > 25)
+  triangle(733,663,783,663,758,613);//Up
+  if(shipHealth > 37)
+  triangle(768,613,818,613,793,663);//Down
+  if(shipHealth > 50)
+  triangle(803,663,853,663,828,613);//Up
+  if(shipHealth > 62)
+  triangle(838,613,888,613,863,663);//Down
+  if(shipHealth > 75)
+  triangle(873,663,923,663,898,613);//Up
+  if(shipHealth > 87)
+  triangle(908,613,958,613,933,663);//Down
+  if(shipHealth <= 0)
+  {
+    exit();
+  }
+}//END ShipHealth
+
+void shipDamage()
+{
+  int check = (int)random(1, 120);
+  if(check == 7)
+  {
+    shipHealth = shipHealth - (int)random(10, 20);
+    damage = 1;
   }
 }
