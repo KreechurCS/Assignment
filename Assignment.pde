@@ -3,11 +3,13 @@ Author: Steve Martin
 Last Update: 02/11/2016
 Description: A Sci-Fi themed HUD for a spaceship
 */
+Radar radar = new Radar();
 void setup()
 {
   size(1000,700);
   background(0);
   noCursor();
+
 }
 //test test1 = new test(500, 500);
 
@@ -26,7 +28,7 @@ void draw()
     overlay();
     pulse();
     myCursor();
-    radar();
+   // radar();
     //test1.update();
   }
   else
@@ -110,6 +112,7 @@ void mainMenus()
   fuelCon = speed();
   shield();
   shipHealth();
+  radar.render();
   
 }//END mainMenus
 
@@ -350,7 +353,7 @@ void shield()
       if (damage == 1)
       {
         textSize(18);
-        text("Damage Taken",770,60);
+        text("Damage Taken",770,100);
       }
     }
   }
