@@ -5,6 +5,7 @@ Description: A Sci-Fi themed HUD for a spaceship
 */
 Radar radar = new Radar();
 starmap starMap = new starmap();
+panning ShipPan = new panning();
 
 void setup()
 {
@@ -13,7 +14,8 @@ void setup()
   noCursor();
 
 }
-//test test1 = new test(500, 500);
+test test1 = new test(500, 500);
+test test2 = new test(200,200);
 
 int start = 0;
 int loadbar = 0;
@@ -32,6 +34,7 @@ void draw()
     myCursor();
    // radar();
     //test1.update();
+    //test2.update();
   }
   else
   {
@@ -116,6 +119,8 @@ void mainMenus()
   shipHealth();
   radar.render();
   starMap.render();
+  
+  ShipPan.render();
   
 }//END mainMenus
 
