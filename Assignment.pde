@@ -4,6 +4,8 @@ Last Update: 02/11/2016
 Description: A Sci-Fi themed HUD for a spaceship
 */
 Radar radar = new Radar();
+starmap starMap = new starmap();
+
 void setup()
 {
   size(1000,700);
@@ -113,6 +115,7 @@ void mainMenus()
   shield();
   shipHealth();
   radar.render();
+  starMap.render();
   
 }//END mainMenus
 
