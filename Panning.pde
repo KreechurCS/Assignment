@@ -14,15 +14,29 @@ class panning
     pushMatrix();
     translate(width/2, 200);
     rotate(theta);
-    line(-20, 0, -170, 0);
-    line(20, 0, 170, 0);
+    line(-20, 0, -160, 0);
+    line(20, 0, 160, 0);
     line(-5, 10, 0, 5);
     line(5, 10, 0, 5);
     popMatrix();
     if (keyPressed)
     {
       if(keyCode == RIGHT)
+      {
         theta += 0.01;
+        if (theta > 0.46)
+        {
+          theta = 0.46;
+        }
+      }
+      if (keyCode == LEFT)
+      {
+        theta -= 0.01;
+        if (theta < -0.46)
+        {
+          theta = -0.46;
+        }
+      }
     }
   }
 }
