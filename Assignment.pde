@@ -6,6 +6,10 @@ Description: A Sci-Fi themed HUD for a spaceship
 Radar radar = new Radar();
 starmap starMap = new starmap();
 panning ShipPan = new panning();
+planet planet1 = new planet(215,450,"zianthantum", 149.6, true);
+planet planet2 = new planet(205,475,"Magmantar", 108.2, false);
+planet planet3 = new planet(140,520,"Gawreh", 227.9, true);
+planet planet4 = new planet(245,540,"Dylanicax IV", 778.5, false);
 
 void setup()
 {
@@ -14,8 +18,8 @@ void setup()
   noCursor();
 
 }
-test test1 = new test(500, 500);
-test test2 = new test(200,200);
+//test test1 = new test(500, 500);
+//test test2 = new test(200,200);
 
 int start = 0;
 int loadbar = 0;
@@ -32,9 +36,11 @@ void draw()
     overlay();
     pulse();
     myCursor();
-   // radar();
-    //test1.update();
-    //test2.update();
+   radar();
+   planet1.Render();
+   planet2.Render();
+   planet3.Render();
+   planet4.Render();
   }
   else
   {
@@ -130,6 +136,8 @@ void mainMenus()
 
 void overlay()
 {
+  stroke(0,255,255);
+  strokeWeight(0.5);
   fill(0,159,255,50);
   //main rect
   rect(50,70, width - 100, 220);
@@ -184,79 +192,14 @@ void pulse()
   }
 }
 
-float RadarX = 25;
-float RadarY = 380;
-int RadarAdd = 2;
-float RadarAddX = 3;
 void radar()
 {
   noStroke();
   fill(0,159,0,50);
   rect(25,380,300,200);
-  
-  //Moving Lines
-  stroke(0,253,255);
-  strokeWeight(2);
-  //Verticle Line
-  line(25,RadarY,325, RadarY);
-  RadarY = RadarY + RadarAdd;
-  if(RadarY >= 580)
-  {
-    RadarAdd = -2;
-  }
-  else if(RadarY <= 380)
-  {
-    RadarAdd = 2;
-  }
-  //Horizontal
-  RadarX = RadarX + RadarAddX;
-  line(RadarX, 380, RadarX, 580);
-  if(RadarX >= 325)
-  {
-    RadarAddX = -3;
-  }
-  else if(RadarX <= 25)
-  {
-    RadarAddX = 3;
-  }
-  //Background
-  noStroke();
-  fill(25,230,6,100);
-  rect(25,380,RadarX - 25,RadarY - 380);
-  
-  RadarHits(RadarX, RadarY);
-  
+ 
 }
 
-int bleep1 = 1;
-int bleep2 = 1;
-void RadarHits(float RadarX, float RadarY)
-{
-  int hit1X, hit1Y;
-  int hit2X, hit2Y;
-  int add = 1;
-   
-  hit1X = 175;
-  hit1Y = 500;
-  hit2X = 280;
-  hit2Y = 420;
-  
-  fill(255);
-  if(RadarX > hit1X && RadarY > hit1Y)
-  {
-    noStroke();
-    fill(255);
-    rect(hit1X, hit1Y, 5, 5);
-  }
-  
-  if(RadarX > hit2X && RadarY > hit2Y)
-  {
-    noStroke();
-    fill(255);
-    rect(hit2X, hit2Y, 5, 5);
-  }
-  
-}//End radar Hits
 
 
 void statusBox()
