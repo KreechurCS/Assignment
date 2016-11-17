@@ -305,6 +305,7 @@ void shield()
       {
         textSize(18);
         text("Damage Taken",770,100);
+        text("Ship Health:" + shipHealth + "%",770, 120);
       }
     }
   }
@@ -360,7 +361,7 @@ int speed()
   fill(0,255,0,125);
   rect(width/2 + 151, height/2 + 201,speedbar, 39,15);
   fill(0,255,0);
-  text("Speed:" + speed,660, height/2 + 195);
+  text("Speed:" + speed ,660, height/2 + 195);
   
    //For Fuel Consumption
   if(speed <= 0)

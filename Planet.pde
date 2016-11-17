@@ -5,6 +5,7 @@ class planet
   String PlanetName;
   float DistanceToSun;
   Boolean Habitability;
+  float theta = 0.0002;
   planet(float xCord, float yCord, String PlanetName, float DistanceToSun, Boolean Habitability)
   {
     this.xCord = xCord;
@@ -23,6 +24,8 @@ class planet
     strokeWeight(1);
     line(xCord, yCord, xCord,yCord + 10);
     ifClick();
+    
+    
   }
   
   void ifClick()
