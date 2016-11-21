@@ -10,13 +10,13 @@ planet planet1 = new planet(215,450,"zianthantum", 149.6, true);
 planet planet2 = new planet(205,475,"Magmantar", 108.2, false);
 planet planet3 = new planet(140,520,"Gawreh", 227.9, true);
 planet planet4 = new planet(245,540,"Dylanicax IV", 778.5, false);
-
+PImage img;
 void setup()
 {
   size(1000,700);
   background(0);
   noCursor();
-
+  img = loadImage("space.png");
 }
 //test test1 = new test(500, 500);
 //test test2 = new test(200,200);
@@ -104,16 +104,17 @@ int fuelCon = 0;
 void mainMenus()
 {
   background(0);
-  fill(100);
+  image(img, 0, 0);
+  fill(20);
   stroke(0,202,255);
   strokeWeight(1);
   rect(0, height/2, width, height);
   fill(0);
   strokeWeight(5);
   stroke(0,202,255);
-  rect(0,0,width,height/2);
+  //rect(0,0,width,height/2);
   noStroke();
-  fill(100);
+  fill(20);
   triangle(0,290, 0, 360, 75, 360);
   triangle(width, 290, width, 360, width -75, 360);
   
