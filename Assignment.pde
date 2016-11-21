@@ -10,6 +10,7 @@ planet planet1 = new planet(215,450,"zianthantum", 149.6, true);
 planet planet2 = new planet(205,475,"Magmantar", 108.2, false);
 planet planet3 = new planet(140,520,"Gawreh", 227.9, true);
 planet planet4 = new planet(245,540,"Dylanicax IV", 778.5, false);
+Engine engine = new Engine();
 PImage img;
 void setup()
 {
@@ -126,7 +127,7 @@ void mainMenus()
   shipHealth();
   radar.render();
   starMap.render();
-  
+  engine.Render();
   ShipPan.render();
   
 }//END mainMenus

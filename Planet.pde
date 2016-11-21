@@ -40,7 +40,7 @@ class planet
   
   void displayInfo()
   {
-    fill(0,255,0,150);
+    fill(0,255,0);
     textSize(18);
     text("Planet: " + PlanetName,65,100);
     text(DistanceToSun + "m KM to Sun",65, 125);
