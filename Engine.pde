@@ -1,9 +1,15 @@
 class Engine
 {
   float rotateSpeed = 1;
+  int Inc;
+  int xSize1 = 10, ySize1 = 10;
+  int xSize2 = 10, ySize2 = 10;
+  int xSize3 = 10, ySize3 = 10;
+  int IncSwitch = 1;
+  
   Engine()
   {
-    this.rotateSpeed = rotateSpeed;
+
   }
   
   void Render()
@@ -58,6 +64,30 @@ class Engine
   
   void internal()
   {
-   
+    noFill();
+    strokeWeight(1);
+    ellipse(80, 640, Inc, Inc);
+    pushMatrix();
+    translate(80,640);
+    rotate(rotateSpeed);
+    ellipse(0, 0, Inc, ySize2);
+    ellipse(0, 0, xSize3, Inc);
+    line(0,0,Inc/2,0);
+    line(0,0,-Inc/2,0);
+    line(0,0,0,Inc/2);
+    line(0,0,0,-Inc/2);
+    popMatrix();
+    
+    if (speed > 0)
+      Inc = Inc + IncSwitch;
+    //ySize1 = Inc + IncSwitch;
+    if(Inc <= 0)
+    {
+      IncSwitch = 2;
+    }
+    else if(Inc >= 99)
+    {
+      IncSwitch = -2;
+    }
   }
 }
