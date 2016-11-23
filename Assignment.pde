@@ -35,7 +35,7 @@ void setup()
 
 int start = 0;
 int loadbar = 0;
-int fuelbar = 300;
+float fuelbar = 300;
 void draw()
 {
   PFont zian;
@@ -112,7 +112,7 @@ void loading()
   }
 }//end loading
 
-int fuelCon = 0;
+float fuelCon = 0;
 void mainMenus()
 {
   background(0);
@@ -143,7 +143,7 @@ void mainMenus()
   
 }//END mainMenus
 
-  int fuel = 100;
+  float fuel = 100;
   int buttonDistX;
   int buttonDistY;
 
@@ -223,7 +223,7 @@ void statusBox()
   rect(600,410,50,275);
 }
 
-void fuelBar(int fuelCon)
+void fuelBar(float fuelCon)
 {
   color fuelColor = color(255,0,0);
   stroke(0,150,255);
@@ -246,7 +246,7 @@ void fuelBar(int fuelCon)
   }
     textSize(28);
   fill(fuelColor);
-  text(fuel + "%", 770, 390);
+  text((int)fuel + "%", 770, 390);
   
   //Refuel Button
   
@@ -336,7 +336,7 @@ void shield()
 
 int speed = 0;
 int speedbar;
-int speed()
+float speed()
 {
   int maxSpeed = 600;
   speedbar = speed/2;
@@ -383,15 +383,15 @@ int speed()
   }
   else if(speed < 200 && speed > 0)
   {
-    return(1);
+    return(.2);
   }
   else if(speed >=200 && speed < 400)
   {
-    return(2);
+    return(.4);
   }
   else if(speed >= 400 && speed < 600);
   {
-    return(3);
+    return(.6);
   }
 }//End Speed
 
