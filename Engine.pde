@@ -35,30 +35,37 @@ class Engine
     if (speed <= 0)
     {
       rotateSpeed = 0;
+      EngineSFX.amp(0.0001);
     }
     else if(speed > 0 && speed <= 100)
     {
-      rotateSpeed += 0.01;
+      rotateSpeed += 0.03;
+      EngineSFX.amp(0.05);
     }
     else if (speed > 100 && speed <= 200)
     {
-      rotateSpeed += 0.03;
+      rotateSpeed += 0.06;
+      EngineSFX.amp(0.10);
     }
     else if (speed > 200 && speed <= 300)
     {
-      rotateSpeed += 0.05;
+      rotateSpeed += 0.09;
+      EngineSFX.amp(0.15);
     }
     else if (speed > 300 && speed <= 400)
     {
-      rotateSpeed += 0.07;
+      rotateSpeed += 0.12;
+      EngineSFX.amp(0.20);
     }
     else if (speed > 400 && speed <= 500)
     {
-      rotateSpeed += 0.09;
+      rotateSpeed += 0.15;
+      EngineSFX.amp(0.25);
     }
     else if (speed > 500 && speed <= 601)
     {
-      rotateSpeed += 1;
+      rotateSpeed += 0.18;
+      EngineSFX.amp(0.3);
     }
   }
   
@@ -76,6 +83,8 @@ class Engine
     line(0,0,-Inc/2,0);
     line(0,0,0,Inc/2);
     line(0,0,0,-Inc/2);
+    triangle(-Inc/2, 0, 0, -Inc/2, Inc/2, 0);
+    triangle(-Inc/2, 0, 0, Inc/2, Inc/2, 0);
     popMatrix();
     
     if (speed > 0)

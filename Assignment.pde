@@ -1,3 +1,5 @@
+import processing.sound.*;
+
 /*
 Author: Steve Martin
 Last Update: 02/11/2016
@@ -12,12 +14,21 @@ planet planet3 = new planet(140,520,"Gawreh", 227.9, true);
 planet planet4 = new planet(245,540,"Dylanicax IV", 778.5, false);
 Engine engine = new Engine();
 PImage img;
+SoundFile file;
+SoundFile EngineSFX;
 void setup()
 {
   size(1000,700);
   background(0);
   noCursor();
   img = loadImage("space.png");
+  file = new SoundFile(this, "starwars.mp3");
+  file.play();
+  file.amp(0.4);
+  EngineSFX = new SoundFile(this, "engine.mp3");
+  EngineSFX.loop();
+  EngineSFX.amp(0);
+  
 }
 //test test1 = new test(500, 500);
 //test test2 = new test(200,200);
