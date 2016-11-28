@@ -12,7 +12,9 @@ planet planet1 = new planet(215,450,"zianthantum", 149.6, true);
 planet planet2 = new planet(205,475,"Magmantar", 108.2, false);
 planet planet3 = new planet(140,520,"Gawreh", 227.9, true);
 planet planet4 = new planet(245,540,"Dylanicax IV", 778.5, false);
+planet planet5 = new planet(180, 505, "Claronia", 333.3, true);
 Engine engine = new Engine();
+Engine engine2 = new Engine();
 PImage img;
 SoundFile file;
 SoundFile EngineSFX;
@@ -25,13 +27,7 @@ void setup()
   file = new SoundFile(this, "starwars.mp3");
   file.play();
   file.amp(0.4);
-  EngineSFX = new SoundFile(this, "engine.mp3");
-  EngineSFX.loop();
-  EngineSFX.amp(0);
-  
 }
-//test test1 = new test(500, 500);
-//test test2 = new test(200,200);
 
 int start = 0;
 int loadbar = 0;
@@ -53,6 +49,7 @@ void draw()
    planet2.Render();
    planet3.Render();
    planet4.Render();
+   planet5.Render();
   }
   else
   {
@@ -139,6 +136,10 @@ void mainMenus()
   radar.render();
   starMap.render();
   engine.Render();
+  pushMatrix();
+  translate(230,640);
+  engine2.Render();
+  popMatrix();
   ShipPan.render();
   
 }//END mainMenus
