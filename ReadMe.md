@@ -15,3 +15,5 @@ I then knew how objects worked so i removed the old radar and added a new one wi
 When <- or -> is pressed the ui will rotate to a maximum angle. I added the starmap then which can be pressed on and displays details of the star or planet on the top left of the cockpit UI.
 I then added the indicator which shows when damage is taken and what percentage health the ship is at.
 Next i replaced the black backgroudn with an image that is laoded and changed the general ship colour.
+I then added the engine in the bottom left which changes speed with the ship speed. This was the thing i was most proud about at it uses standard concepts of addition and subtraction to make it pulse in and out. I also used push pop matrix and translate and rotate to complete the function of the engine. I added the background music next using the sound library in processing and engine sounds. However i had to remove this as it was producing an unknown error and would not loop. I then updated the rate at which fuel decreases.
+	Overall i enjoyed this assignment and look forward to doing more assignments/projects similiar to this.
